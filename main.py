@@ -3,9 +3,12 @@
 # count_words("The cake is done. It is a big cake!") 
 # --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
 
-# Create a list of punctuations which should be removed from the content of the file
+
+# Create a list of punctuations to be removed from the text file
 regexList = [',', '?', '.', '!']
 
+
+# Read file and strip punctuations
 def readFileContent(filename):
     with open(filename, 'r') as txt:
         content = txt.read()
@@ -14,14 +17,22 @@ def readFileContent(filename):
         return content
 
 
+# Count occurence of words in text
+def countWords():
+    text = readFileContent("./story.txt")
+    dataDict = {}
+    text = text.split()
+    for word in text:
+        if word in dataDict:
+            dataDict[word] += 1
+        else:
+            dataDict[word] = 1  
 
-# def countWords():
-#     text = readFileContent("./story.txt")
-#     # [assignment] Add your code here
-#     text = text.split()
-#     return {"as": 10, "would": 20}
+    return dataDict          
 
+  
 
+print(countWords())
 
-print(readFileContent('./story.txt'))
+# print(readFileContent('./story.txt'))
 
